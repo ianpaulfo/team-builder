@@ -5,9 +5,9 @@ const Members = props => {
 
     return (
         <div>
-            <h2>person.name</h2>
-            <h3>person.role</h3>
-            <p>person.email</p>
+            <h2>{person.name}</h2>
+            <h3>{person.role}</h3>
+            <p>{person.email}</p>
         </div>
     )
 

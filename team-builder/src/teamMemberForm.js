@@ -1,58 +1,53 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 
-// const teamMemberForm = ({ addNewTeamMember }) => {
-//   const [member, setMember] = useState({
-//     id: "",
-//     name: "",
-//     role: "",
-//     email: "",
-//   });
+const TeamMemberForm = props => {
+    const setTeam = props.setTeam;
+    const [person, setPerson] = useState({ name: "", role: "", email: "" });
+  
 
-//   const handleChanges = event => {
-//     console.log("event", event.target.value);
-//     setMember({ ...member, [event.target.name]: event.target.value });
-//   };
+  const eventHandler = event => {
+    setPerson({ ...person, [event.target.name]: event.target.value });
+  };
 
-//   const submitForm = event => {
-//     event.preventDefault();
-//     addNewTeamMember(member);
 
-//     setMember({ name: "", role: "", email: "" });
-//   };
-//   return (
-//     <form onSubmit={submitForm}>
-//       <label htmlFor="name">Name</label>
-//       <input
-//         required="true"
-//         id="name"
-//         type="text"
-//         name="name"
-//         placeholder="Enter your Name"
-//         onChange={handleChanges}
-//         value={member.name}
-//       />
-//       <label htmlFor="role">Role</label>
-//       <input
-//         required="true"
-//         id="role"
-//         type="text"
-//         name="role"
-//         placeholder="Enter your Role"
-//         onChange={handleChanges}
-//         value={member.role}
-//       />
-//       <label htmlFor="email">Email</label>
-//       <input
-//         required="true"
-//         id="email"
-//         type="email"
-//         name="email"
-//         placeholder="Enter your Email"
-//         onChange={handleChanges}
-//         value={member.email}
-//       />
-//     </form>
-//   );
-// };
+  const submitHandler = event => {
+    event.preventDefault();
+    setTeam(team => [...team, person]);
 
-// export default teamMemberForm;
+    setPerson({ name: "", role: "", email: "" });
+  };
+
+  console.log(props);
+
+  return (
+    <form onSubmit={submitHandler}>
+      <label htmlFor="name">Name:</label>
+      <input
+        type="name"
+        name="name"
+        placeholder="name"
+        value={person.name}
+        onChange={eventHandler}
+      />
+      <label htmlFor="role">Role:</label>
+      <input
+        type="text"
+        name="role"
+        placeholder="role"
+        value={person.role}
+        onChange={eventHandler}
+      />
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="email@teambldr.com"
+        value={person.email}
+        onChange={eventHandler}
+      />
+      <button type="submit">Add Team Member</button>
+    </form>
+  );
+};
+
+export default TeamMemberForm;
