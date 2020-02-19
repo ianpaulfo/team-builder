@@ -1,27 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import  React, { useState } from 'react';
 import './App.css';
+import MemberForm from "./components/MemberForm.js";
+import MemberCard from "./components/MemberCard.js";
 
 function App() {
+
+  const [team, setTeam] = useState([]);
+
+  const teamChanger = newMember => {
+    setTeam([...team, newMember]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> 
+      <h1>Welcom to Team Lambda</h1>
+      <h2>Join Our Team!</h2>
 
+      <MemberForm teamChanger={teamChanger} />
 
+      <h2>The team:</h2>
 
+        {/* {map members & index for membercards} */}
     </div>
   );
 }
