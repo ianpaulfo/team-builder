@@ -19,8 +19,10 @@ function App() {
       <MemberForm teamChanger={teamChanger} />
 
       <h2>The team:</h2>
-
-        {/* {map members & index for membercards} */}
+      
+      {team.map((member, index) => (
+          <MemberCard key={index} newMember={member} />
+          ))}
     </div>
   );
 }
